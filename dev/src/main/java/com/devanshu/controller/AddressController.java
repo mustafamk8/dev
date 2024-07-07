@@ -19,29 +19,27 @@ import com.devanshu.service.AddressService;
 @RequestMapping("/addresses")
 public class AddressController {
 
-    @Autowired
-    private AddressService addressService;
+	@Autowired
+	private AddressService addressService;
 
-    @GetMapping
-    public List<Address> getAllAddresses() {
-        return addressService.findAll();
-    }
+	@GetMapping
+	public List<Address> getAllAddresses() {
+		return addressService.findAll();
+	}
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Address> getAddressById(@PathVariable Long id) {
-        return addressService.findById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
-    }
+	@GetMapping("/{id}")
+	public ResponseEntity<Address> getAddressById(@PathVariable Long id) {
+		return addressService.findById(id).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+	}
 
-    @PostMapping
-    public Address createAddress(@RequestBody Address address) {
-        return addressService.save(address);
-    }
+	@PostMapping
+	public Address createAddress(@RequestBody Address address) {
+		return addressService.save(address);
+	}
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteAddress(@PathVariable Long id) {
-        addressService.deleteById(id);
-        return ResponseEntity.noContent().build();
-    }
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Void> deleteAddress(@PathVariable Long id) {
+		addressService.deleteById(id);
+		return ResponseEntity.noContent().build();
+	}
 }

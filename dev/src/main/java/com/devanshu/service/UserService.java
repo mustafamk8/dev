@@ -12,24 +12,24 @@ import com.devanshu.repo.UserRepo;
 @Service
 public class UserService {
 
-	@Autowired
-    private UserRepo userRepository;
+	 @Autowired
+	    private UserRepo userRepository;
 
-    public List<User> findAll() {
-        return userRepository.findAll();
-    }
+	    public List<User> findAll() {
+	        return userRepository.findAll();
+	    }
 
-    public Optional<User> findById(Long id) {
-        return userRepository.findById(id);
-    }
+	    public Optional<User> findById(Long id) {
+	        return userRepository.findById(id);
+	    }
 
-    public User save(User user) {
-        user.getAddresses().forEach(address -> address.setUser(user));
-        return userRepository.save(user);
-    }
+	    public User save(User user) {
+	        user.getAddresses().forEach(address -> address.setUser(user));
+	        return userRepository.save(user);
+	    }
 
-    public void deleteById(Long id) {
-        userRepository.deleteById(id);
-    }
+	    public void deleteById(Long id) {
+	        userRepository.deleteById(id);
+	    }
 	
 }
